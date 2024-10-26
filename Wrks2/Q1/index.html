@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Value Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .calculator-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .calculator-container h1 {
+            font-size: 2em;
+            color: #4682b4;
+            text-align: left;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .calculator-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; 
+            margin-top: 10px;
+            padding-left: 60px;
+        }
+
+        .calculator-container label {
+            font-weight: bold;
+            font-size: 1em;
+            width: 180px;
+            text-align: left;
+            margin-right: 10px;
+        }
+
+        .calculator-container input,
+        .calculator-container output {
+            width: 250px; 
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .calculator-container output {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            
+        }
+
+        .calculator-container button {
+            width: 200px;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 280px; 
+        }
+
+        .calculator-container button:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body onload="document.getElementById('investment').focus()">
+
+    <div class="calculator-container">
+        <h1>The Future Value Calculator</h1>
+
+        <div class="calculator-row">
+            <label for="investment">Total investment:</label>
+            <input type="text" id="investment" placeholder="e.g., 1000">
+        </div>
+
+        <div class="calculator-row">
+            <label for="rate">Annual interest rate:</label>
+            <input type="text" id="rate" placeholder="e.g., 5">
+        </div>
+
+        <div class="calculator-row">
+            <label for="years">Number of years:</label>
+            <input type="text" id="years" placeholder="e.g., 10">
+        </div>
+
+        <div class="calculator-row">
+            <label for="future_value">Future value:</label>
+            <output id="future_value"></output>
+        </div>
+
+        <button id="calculate">Calculate</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

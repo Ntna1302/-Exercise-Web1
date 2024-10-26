@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        .form-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 450px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            align-items: center;
+        }
+
+        .form-container h2 {
+            color: #555;
+            text-align: center;
+        }
+
+        .error-messages {
+            border: 1px solid #e74c3c;
+            background-color: #fce4e4;
+            color: #e74c3c;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .form-group label {
+            display: inline-block;
+            padding-left: 20px;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group select {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 3px;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-left: 5px;
+        }
+
+        .form-group .required {
+            color: red;
+        }
+        
+        .button-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button-group button {
+            padding: 8px 16px;
+            font-size: 1em;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body onload="document.getElementById('email').focus()">
+
+    <div class="form-container">
+        <h2>Register for an Account</h2>
+        <div id="errorMessages" class="error-messages" style="display: none;"></div>
+
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="text" id="email" name="email">
+                <span class="required">*</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Mobile Phone:</label>
+                <input type="text" id="phone" name="phone">
+                <span class="required">*</span>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="">Select a country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="UK">United Kingdom</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <span class="required">*</span>
+            </div>
+
+            <div class="form-group">
+                <label>Contact me by:</label>
+                <input type="radio" name="contact" value="text"> Text
+                <input type="radio" name="contact" value="email"> Email
+                <input type="radio" name="contact" value="none"> Don't contact me
+            </div>
+
+            <div class="form-group">
+                <label>Terms of Service:</label>
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">I accept</label>
+                <span class="required">*</span>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Register</button>
+                <button type="button" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const country = document.getElementById("country").value;
+            const terms = document.getElementById("terms").checked;
+            let errors = [];
+
+            if (!email) {
+                errors.push("Please enter an email address.");
+            }
+            if (!phone) {
+                errors.push("Please enter a mobile phone number.");
+            }
+            if (!country) {
+                errors.push("Please select a country.");
+            }
+            if (!terms) {
+                errors.push("You must agree to the terms of service.");
+            }
+
+            const errorMessagesDiv = document.getElementById("errorMessages");
+            if (errors.length > 0) {
+                errorMessagesDiv.innerHTML = "<ul><li>" + errors.join("</li><li>") + "</li></ul>";
+                errorMessagesDiv.style.display = "block";
+                return false; // Prevent form submission
+            } else {
+                errorMessagesDiv.style.display = "none";
+                alert("Form submitted successfully!");
+                return true; // Allow form submission
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("registrationForm").reset();
+            document.getElementById("errorMessages").style.display = "none";
+            document.getElementById("email").focus();
+        }
+    </script>
+
+</body>
+</html>
